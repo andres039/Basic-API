@@ -41,7 +41,7 @@ describe("When making a request with the tag 'culture'", () => {
 
 describe("When making a request with multiple tags", () => {
   test("There shouldn't be duplicate posts", async () => {
-    const response = await supertest(app).get("/?tag=culture,tech")
+    const response = await supertest(app).get("/?tag=culture,tech,politics,history")
     expect(anyDuplicates(response.body.posts)).toBe(false);
   });
 });
