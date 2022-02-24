@@ -1,22 +1,5 @@
-
-let test = [{id: 1}, {id: 5}, {id: 4}, {id: 3}]
-
 const sortBy = (posts, field) => {
-  return posts.sort((a, b) => a[field] - b[field])
-}
-
-const anyDuplicates = (posts) => {
-  let ids = [];
-  let result = false
-  posts.forEach(post => {
-    if (ids.includes(post.id)) {
-    	result = true
-      return 
-    } else {
-      ids.push(post.id)
-    }
-  })
-  return result
+  return posts.sort((a, b) => a[field] - b[field]);
 };
 
 const removeRepeated = (posts) => {
@@ -30,5 +13,4 @@ const removeRepeated = (posts) => {
   }, []);
 };
 
-export { removeRepeated, anyDuplicates, sortBy }
-
+export { removeRepeated, sortBy };

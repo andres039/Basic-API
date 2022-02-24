@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   if (req.query.direction) {
     return res.status(400).json({
-      error: "sortBy parameter is invalid",
+      error: "direction parameter is invalid",
     });
   }
   if (!req.query.tag) {
@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
 
   const tags = req.query.tag.split(",");
   const content = await returnBlogs(tags);
+
   if (req.query.sortBy) {
     if (
       req.query.sortBy === "id" ||
