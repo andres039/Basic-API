@@ -1,27 +1,6 @@
 import fetch from "node-fetch";
 import { removeRepeated } from "../helpers.js";
 
-const obj = [
-  {
-    author: "Rylee Paul",
-    authorId: 9,
-    id: 92,
-    likes: 203,
-    popularity: 0.49,
-    reads: 82099,
-    tags: ["health"],
-  },
-  {
-    author: "Jon Abbott",
-    authorId: 4,
-    id: 95,
-    likes: 985,
-    popularity: 0.42,
-    reads: 55875,
-    tags: ["politics", "tech", "health", "history"],
-  },
-];
-
 const fetchData = async (tag) => {
   return await fetch(
     `https://api.hatchways.io/assessment/blog/posts?tag=${tag}`
@@ -40,7 +19,4 @@ const returnBlogs = async (tags) => {
   return removeRepeated(result.flat());
 };
 
-const result = await returnBlogs(["tech", "health", "politics"])
-console.log(result);
-
-export { obj as default, returnBlogs };
+export { returnBlogs };

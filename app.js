@@ -1,52 +1,32 @@
-import express, { json } from "express";
+import express from "express";
 import "dotenv/config";
-import cors from "cors"
-
-import models from "./models/index.js";
+import cors from "cors";
+import posts from "./routes/posts.js";
 
 const app = express();
-const PORT = process.env.PORT || 8081
+const PORT = process.env.PORT || 8081;
 
 //built in middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }));
 
 //third party middleware
-app.use(cors())
+app.use(cors());
 
 //Custom middleware
 
-app.use((req, res, next) => {
-  req.context = {
-    models,
-  };
-  next();
-});
+// app.use((req, res, next) => {
+//   req.context = {
+//     models,
+//   };
+//   next();
+// });
 // GET route
-const removeRepeated = (posts) => {
-  let ids = [];
-  return posts.reduce((result, post) => {
-    if (!ids.includes(post.id)) {
-      result.push(post);
-      ids.push(post.id);
-    }
-    return result;
-  }, []);
-};
 
-
-
-
-
-app.get("/", (req, res) => {
-  res.json({ message: "hello buddy", content: req.context });
-});
-
+app.use("/api/posts", posts)
 // start!
 
 app.listen(PORT, () => console.log(`😃 listening on port ${PORT} 👍`));
-
-export default app;
 
 /*
 [x] Get data from online API with a function
