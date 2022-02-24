@@ -1,6 +1,5 @@
 import express from "express";
 import "dotenv/config";
-import cors from "cors";
 import posts from "./routes/posts.js";
 import ping from "./routes/ping.js";
 

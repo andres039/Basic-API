@@ -1,3 +1,17 @@
+const anyDuplicates = (posts) => {
+  let ids = [];
+  let result = false
+  posts.forEach(post => {
+    if (ids.includes(post.id)) {
+    	result = true
+      return 
+    } else {
+      ids.push(post.id)
+    }
+  })
+  return result
+};
+
 const removeRepeated = (posts) => {
   let ids = [];
   return posts.reduce((result, post) => {
@@ -9,5 +23,5 @@ const removeRepeated = (posts) => {
   }, []);
 };
 
-export { removeRepeated }
+export { removeRepeated, anyDuplicates }
 

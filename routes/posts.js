@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
 
   const tags = req.query.tag.split(",");
   const content = await returnBlogs(tags);
-  console.log(tags);
   res.status(200).json({ posts: content });
 });
 
